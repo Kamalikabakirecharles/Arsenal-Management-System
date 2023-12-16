@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>RDF Arsenal</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <!--fav-icon-->
+    <link rel="shortcut icon" href="/images/favicon.png"/>
+
+</head>
+
+<body>
+<section class="main" style="background-image: url(images/Screenshot.png);">
+<nav>
+    <a href="#" class="logo">
+        <img src="/images/logo.png" height="40px" alt="logo"/>
+    </a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn">
+        <span class="nav-icon"></span>
+    </label>
+    <ul class="menu" style="border-radius: 5px;">
+        <li><a th:href="@{/search}">Search</a></li>
+        <li><a th:href="@{/soldiers}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Login</a></li>
+    </ul>
+</nav>
+<!--main-content-->
+<div class="home-content">
+
+    <!--text-->
+    <div class="home-text" >
+
+        <h3 style="color: white; letter-spacing: 2px;">Rwanda Defence Force</h3>
+        <h1 style="color: white;"> Arsenal Portal</h1>
+        <p style="color: white;">The Rwanda Defence Force (RDF) was previously a liberation force known as the Rwanda Patriotic Army (RPA). The Law No 19/2002 of 17/05/2002 renamed the RPA as the Rwanda Defence Force.</p>
+        <!--login-btn-->
+        <a th:href="@{/soldiers}" class="main-login" style="border-radius: 5px;">Login Now</a>
+    </div>
+    <!--img-->
+    <div class="home-img" style="width: 500px;">
+        <img src="/images/hat.png" width="500px" alt="logo"/>
+    </div>
+
+</div>
+<!--footer------------->
+<footer>
+    <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+</footer>
+</body>
+</html>

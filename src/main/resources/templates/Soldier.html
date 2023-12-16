@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDF Arsenal</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <!--fav-icon-->
+    <link rel="shortcut icon" href="/images/favicon.png"/>
+
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="main">
+
+    <nav>
+        <a th:href="@{/}" class="logo">
+            <img src="/images/logo.png" height="40px" alt="logo"/>
+        </a>
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn">
+            <span class="nav-icon"></span>
+        </label>
+        <ul class="menu" style="border-radius: 5px;">
+            <li><a th:href="@{/dash}">Back</a></li>
+            <li><a th:href="@{/}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Home</a></li>
+        </ul>
+    </nav>
+
+    <form th:action="@{/createSoldier}" method="post" th:object="${soldierModel}" id="signup-form">
+        <h2>New Soldier</h2>
+        <div class="form-group fullname">
+            <label for="fullname">UserName</label>
+            <input type="text" th:field="*{username}" id="fullname" placeholder="Enter your Username" required>
+        </div>
+        <div class="form-group student_id">
+            <label for="email">Email</label>
+            <input type="email" th:field="*{email}" id="email" placeholder="Enter your email" required>
+            <span id="email-error" class="error-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="rank">Rank</label>
+            <select id="rank" name="rank" th:field="*{rank}">
+                <option th:each="enumItem : ${T(com.WebtecFinalProject.Model.Rank).values()}"
+                        th:value="${enumItem.name()}" th:text="${enumItem}"></option>
+            </select>
+        </div>
+        <div class="form-group password">
+            <label for="militarynumber">Military Number</label>
+            <i id="military" class="fas fa-eye"></i>
+            <input type="text" th:field="*{militaryNumber}" id="militarynumber" placeholder="Enter your militaryNumber" required>
+            <span id="militarynumber-error" class="error-message"></span>
+        </div>
+        <div class="form-group password">
+            <label for="password">Password</label>
+            <i id="pass-toggle-btn" class="fas fa-eye"></i>
+            <input type="password" th:field="*{password}" id="password" placeholder="Enter your Password" required>
+        </div>
+        <br />
+        <div class="form-group submit-btn">
+            <input type="submit" value="Signup">
+        </div>
+        <div>
+        </div>
+    </form>
+
+</section>
+<!--footer------------->
+<footer>
+    <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the form and input elements
+        var form = document.getElementById('signup-form');
+        var emailInput = document.getElementById('email');
+        var militaryNumberInput = document.getElementById('militarynumber');
+
+        // Add event listener for form submission
+        form.addEventListener('submit', function (event) {
+            // Validate email format using a regular expression
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                // If the email is not valid, prevent form submission and show an error
+                event.preventDefault();
+                document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+            } else {
+                document.getElementById('email-error').textContent = '';
+            }
+
+            // Validate military number to be above 5 digits
+            if (militaryNumberInput.value.length < 5) {
+                event.preventDefault();
+                document.getElementById('militarynumber-error').textContent = 'Military Number should be at least 5 digits.';
+            } else {
+                document.getElementById('militarynumber-error').textContent = '';
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

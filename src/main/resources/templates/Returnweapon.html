@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>RDF Arsenal</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <!--fav-icon-->
+    <link rel="shortcut icon" href="images/favicon.png"/>
+
+</head>
+
+<body>
+
+<section class="main">
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" height="40px" />
+        </a>
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn">
+            <span class="nav-icon"></span>
+        </label>
+        <ul class="menu" style="border-radius: 5px;">
+            <li><a th:href="@{/dash}">Back</a></li>
+            <li><a th:href="@{/}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Home</a></li>
+        </ul>
+    </nav>
+
+    <form th:action="@{/createReturns}" method="post" th:object="${returnsModel}" id="returnsForm">
+        <h2>Return Weapon</h2>
+        <div class="form-group fullname">
+            <label for="request">Request</label>
+            <select id="request" name="request.id">
+                <option th:each="request : ${allrequest}" th:value="${request.id}" th:text="${request.getRequestdate()}"></option>
+            </select>
+        </div>
+        <div class="form-group student_id">
+            <label for="bullet">Return Bullet</label>
+            <input type="number" id="bullet" placeholder="Number of Bullet" th:field="*{returnbullet}" required>
+        </div>
+        <div class="form-group student_id">
+            <label for="magazine">Return Magazine</label>
+            <input type="number" id="magazine" placeholder="Number of Magazine" th:field="*{returnmagazine}" required>
+        </div>
+        <br />
+        <div class="form-group submit-btn">
+            <input type="submit" value="Request">
+        </div>
+    </form>
+</section>
+<!--footer------------->
+<footer>
+    <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+</footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var returnsForm = document.getElementById('returnsForm');
+
+        returnsForm.addEventListener('submit', function (event) {
+            // Validate additional fields if needed
+
+            // Example: Validate that the returnbullet field is a positive number
+            var returnBulletInput = document.getElementById('bullet');
+            if (isNaN(returnBulletInput.value) || parseInt(returnBulletInput.value) <= 0) {
+                event.preventDefault();
+                alert('Please enter a valid number of bullets.');
+            }
+        });
+    });
+</script>
+</html>

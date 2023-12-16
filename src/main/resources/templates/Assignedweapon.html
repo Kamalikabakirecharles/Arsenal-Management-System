@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>RDF Arsenal</title>
+<link rel="stylesheet" href="css/style.css"/>
+<!--fav-icon-->
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+</head>
+
+<body>
+    
+    <section class="main">
+        
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" height="40px" />
+            </a>
+            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+            <ul class="menu" style="border-radius: 5px;">
+                <li><a th:href="@{/dash}">Back</a></li>
+                <li><a th:href="@{/}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Home</a></li>
+            </ul>
+        </nav>
+
+        <form th:action="@{/createRequest}" method="post" th:object="${requestModel}">
+            <h2>Assign Weapon</h2>
+            <div class="form-group fullname">
+                <label for="gun">Gun</label>
+                <select id="gun" name="gun.id">
+                    <option th:each="gun : ${allGuns}" th:value="${gun.id}" th:text="${gun.guntype}"></option>
+                </select>
+            </div>
+            <div class="form-group date">
+                <label for="requestdate">Request Date</label>
+                <input type="date" id="requestdate" name="requestdate" th:field="*{requestdate}" pattern="\d{4}-\d{2}-\d{2}" required>
+            </div>
+            <div class="form-group date">
+                <label for="soldier">Soldier</label>
+                <select id="soldier" name="soldier.id">
+                    <option th:each="soldier : ${allSoldiers}" th:value="${soldier.id}" th:text="${soldier.username}"></option>
+                </select>
+            </div>
+            <br />
+            <div class="form-group submit-btn">
+              <input type="submit" value="Request">
+            </div>
+          </form>
+
+    </section>
+    <!--footer------------->
+    <footer>
+        <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+    </footer>
+    
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var requestForm = document.getElementById('requestForm');
+
+        requestForm.addEventListener('submit', function (event) {
+            // Validate additional fields if needed
+
+            // Example: Validate that the request date is not in the past
+            var requestDateInput = document.getElementById('requestdate');
+            var currentDate = new Date();
+            var selectedDate = new Date(requestDateInput.value);
+
+            if (selectedDate < currentDate) {
+                event.preventDefault();
+                alert('Please select a future date for the request.');
+            }
+        });
+    });
+</script>
+</html>

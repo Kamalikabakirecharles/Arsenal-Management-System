@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>RDF Arsenal</title>
+<link rel="stylesheet" href="css/style.css"/>
+<!--fav-icon-->
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+</head>
+
+<body>
+    
+    <section class="main">
+        
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" height="40px" />
+            </a>
+            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+            <ul class="menu" style="border-radius: 5px;">
+                <li><a th:href="@{/dash}">Back</a></li>
+                <li><a th:href="@{/}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Home</a></li>
+            </ul>
+        </nav>
+
+        <form th:action="@{/createGun}" method="post" th:object="${gunModel}">
+          <h2>New Gun</h2>
+          <div class="form-group">
+            <label for="manufacturer">Manufacturer</label>
+              <select id="manufacturer" name="manufacturer" th:field="*{manufacturer}">
+                  <option th:each="enumItem : ${T(com.WebtecFinalProject.Model.Manufacturer).values()}"
+                          th:value="${enumItem.name()}" th:text="${enumItem}"></option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" id="model" placeholder="Enter Gun Model" th:field="*{model}" required>
+          </div>
+          <div class="form-group">
+            <label for="gunType">Gun Type</label>
+              <select id="gunType" name="guntype" th:field="*{guntype}">
+                  <option th:each="enumItem : ${T(com.WebtecFinalProject.Model.Guntype).values()}"
+                          th:value="${enumItem.name()}" th:text="${enumItem}"></option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="password">Serial Number</label>
+            <input type="text" id="password" placeholder="Enter Gun Serial Number" th:field="*{serialNumber}" required>
+          </div>
+          <div class="form-group">
+            <label for="purchaseDate">Purchase Date</label>
+            <input type="date" id="purchaseDate" placeholder="Enter Gun Purchase Date" th:field="*{purchaseDate}" required>
+          </div>
+          <div class="form-group">
+            <label for="gunOwner">Registration Number</label>
+            <input type="text" id="gunOwner" placeholder="Enter Registration Number" th:field="*{registrationNumber}" required>
+          </div>
+        <br/>
+          <div class="form-group submit-btn">
+            <input type="submit" value="Save">
+          </div>
+        </form>
+        
+
+    </section>
+    <!--footer------------->
+    <footer>
+        <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+    </footer>
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var gunForm = document.getElementById('gunForm');
+
+        gunForm.addEventListener('submit', function (event) {
+            // Validate additional fields if needed
+
+            // Example: Validate that the model is not empty
+            var modelInput = document.getElementById('model');
+            if (modelInput.value.trim() === '') {
+                event.preventDefault();
+                alert('Please enter the gun model.');
+                // You can also show the error next to the input if needed
+                // For example: modelInput.nextElementSibling.textContent = 'Please enter the gun model.';
+            }
+        });
+    });
+</script>
+</html>

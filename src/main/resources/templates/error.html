@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>RDF Arsenal</title>
+<link rel="stylesheet" href="/css/style.css"/>
+<!--fav-icon-->
+<link rel="shortcut icon" href="/images/favicon.png"/>
+
+</head>
+
+<body>
+    
+    <section class="main" style="background-image: url(/images/error.jpg);">
+        
+        <nav>
+            <a href="#" class="logo">
+                <img src="/images/logo.png" height="40px" />
+            </a>
+            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+            <ul class="menu" style="border-radius: 5px;">
+                <li><a th:href="@{/dash}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Back</a></li>
+            </ul>
+        </nav>
+        <!--main-content-->
+        <div class="home-content">
+            
+            <!--text-->
+            <div class="home-text" >
+                
+                <h3 style="color: #4b5320; letter-spacing: 2px;">Arsenal Portal</h3>
+                <h1 style="color: #4b5320;">OOps!</h1>
+                <p style="color: #4b5320; font-size: 30px;" th:text="${errorMessage}"></p>
+            <!--login-btn-->
+            <a th:href="@{/dash}" class="main-login" style="border-radius: 5px;">Back Home</a>
+            </div>
+            <!--img-->
+            <div class="home-img" style="width: 500px;">
+                <!-- <img src="images/hat.png" width="500px" style="text-shadow: 20px 22px;"/> -->
+            </div>
+            
+        </div>  
+    <!--footer------------->
+    <footer>
+        <p style="color: #082f08;">Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+    </footer>
+    
+</body>
+
+</html>

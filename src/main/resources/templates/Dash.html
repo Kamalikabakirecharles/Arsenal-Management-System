@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>RDF Arsenal</title>
+<link rel="stylesheet" href="/css/style.css"/>
+<!--fav-icon-->
+<link rel="shortcut icon" href="/images/favicon.png"/>
+
+</head>
+
+<body>
+    
+    <section class="main" style="background-image: url(images/Screenshot.png);">
+        
+        <nav>
+            <a th:href="@{/}" class="logo">
+                <img src="/images/logo.png" height="40px" />
+            </a>
+            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+            <ul class="menu" style="border-radius: 5px;">
+                <li><a th:href="@{/search}" >Search</a></li>
+                <li><a th:href="@{/Login}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">LogOut</a></li>
+            </ul>
+        </nav>
+        <!--main-content-->
+        <div class="home-content">
+            
+            <!--text-->
+            <div class="home-text" >
+                
+                <h2 style="color: white; letter-spacing: 2px;">RDF Arsenal</h2>
+                <h1 style="color: white;"> Administration Portal</h1>
+            </div>
+            <!--img-->
+            <div class="home-img" style="width: 500px;">
+                <img src="images/hat.png" width="500px" style="text-shadow: 20px 22px;"/>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!--services----------------------->
+    <section class="services">
+        <!--heading----------->
+        <div class="services-heading">
+            <h2>SERVICES</h2>
+        </div>
+        <!--box-container----------------->
+        <div class="box-container">
+            <!--box-1-------->
+            <div class="box">
+                <img src="/images/icon5.png">
+                <font>Add New Weapons</font>
+                <p>Discover the Latest Arsenal and Add New Weapons to Your Inventory</p>
+                <!--btn--------->
+                <a th:href="@{/gun}">Go</a>
+            </div>
+            <!--box-2-------->
+            <div class="box">
+                <img src="/images/icon4.png">
+                <font>Return Weapons</font>
+                <p>Effortlessly Return and Manage Your Deployed Weapons</p>
+                <!--btn--------->
+                <a th:href="@{/returns}">Go</a>
+            </div>
+            <!--box-2-------->
+            <div class="box">
+                <img src="/images/icon3.png">
+                <font>Assign Weapons</font>
+                <p>Place Requests for Specific Weapons and Equip Your Forces</p>
+                <!--btn--------->
+                <a th:href="@{/request}">Go</a>
+            </div>
+            <!--box-2-------->
+            <div class="box">
+                <img src="/images/icon1.png">
+                <font>Add New Soldier</font>
+                <p>Enlist New Soldiers to Strengthen Your Tactical Capabilities</p>
+                <!--btn--------->
+                <a th:href="@{/soldier}">Go</a>
+            </div>
+            <!--box-2-------->
+            <div class="box">
+                <img src="/images/icon2.png">
+                <font>Edit Info</font>
+                <p>Access and Edit Soldier and Gun Information for Precision in Reporting</p>
+                <!--btn--------->
+                <a th:href="@{/report}">Go</a>
+            </div>
+        </div>
+    </section>
+    
+    <!--footer------------->
+    <footer>
+        <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+    </footer>
+    
+</body>
+
+</html>

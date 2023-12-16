@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDF Arsenal</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <!--fav-icon-->
+    <link rel="shortcut icon" href="images/favicon.png"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+<section class="main">
+
+    <nav>
+        <a th:href="@{/}" class="logo">
+            <img src="images/logo.png" height="40px" />
+        </a>
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn">
+            <span class="nav-icon"></span>
+        </label>
+        <ul class="menu" style="border-radius: 5px;">
+            <li><a th:href="@{/dash}">Home</a></li>
+            <li><a th:href="@{/}" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Login</a></li>
+        </ul>
+    </nav>
+
+    <form th:action="@{/loginSoldier}" method="post" th:object="${soldierModel}" onsubmit="return validateForm()">
+        <h2>Login</h2>
+        <div class="form-group militaryNumber">
+            <label for="username">Username</label>
+            <input type="text" th:field="*{username}" id="username" placeholder="Enter your username" required>
+            <span id="usernameError" style="color: red;"></span>
+        </div>
+        <div class="form-group password">
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" id="password" placeholder="Enter your password" required>
+        </div>
+        <div>
+            <!-- Additional form fields or content can be added here if needed -->
+        </div>
+        <br />
+        <div class="form-group submit-btn">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+
+</section>
+<!--footer------------->
+<footer>
+    <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+</footer>
+<script src="asserts/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function (event) {
+            // Validate additional fields if needed
+
+            // Example: Validate that the username is not empty
+            var usernameInput = document.getElementById('username');
+            if (usernameInput.value.trim() === '') {
+                event.preventDefault();
+                showError('Please enter your username.', 'usernameError');
+            } else {
+                clearError('usernameError');
+            }
+        });
+
+        function showError(message, elementId) {
+            var errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = message;
+            } else {
+                // If error element doesn't exist, create and append it
+                errorElement = document.createElement('span');
+                errorElement.id = elementId;
+                errorElement.style.color = 'red';
+                errorElement.textContent = message;
+                var parentElement = document.querySelector('.form-group.' + elementId);
+                if (parentElement) {
+                    parentElement.appendChild(errorElement);
+                }
+            }
+        }
+
+        function clearError(elementId) {
+            var errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = '';
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

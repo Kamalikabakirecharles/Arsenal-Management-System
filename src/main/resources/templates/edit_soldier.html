@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>RDF Arsenal</title>
+<link rel="stylesheet" href="/css/style.css"/>
+    <!--fav-icon-->
+<link rel="shortcut icon" href="/images/favicon.png"/>
+</head>
+<body>
+<section class="main">
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="/images/logo.png" height="40px"  alt="logo"/>
+        </a>
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn">
+            <span class="nav-icon"></span>
+        </label>
+        <ul class="menu" style="border-radius: 5px;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px; cursor: pointer;">Home</a></li>
+        </ul>
+    </nav>
+
+    <form th:action="@{/createSoldier}" method="post" th:object="${soldierModel}">
+        <h2>Edit Soldier</h2>
+        <div class="form-group fullname">
+            <label for="fullname">UUID</label>
+            <input type="text" th:field="*{id}" id="uuid" placeholder="Soldier UUID" readonly>
+        </div>
+        <div class="form-group fullname">
+            <label for="fullname">UserName</label>
+            <input type="text" th:field="*{username}" id="fullname" placeholder="Enter your Username">
+        </div>
+        <div class="form-group student_id">
+            <label for="email">Email</label>
+            <input type="email" th:field="*{email}" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group date">
+            <label for="rank">Rank</label>
+            <select id="rank" name="rank" th:field="*{rank}">
+                <option value="" disabled selected>Select Rank</option>
+                <option th:each="enumItem : ${T(com.WebtecFinalProject.Model.Rank).values()}"
+                        th:value="${enumItem.name()}" th:text="${enumItem}"></option>
+            </select>
+        </div>
+        <div class="form-group password">
+            <label for="militaryNumber">Military Number</label>
+            <input type="text" th:field="*{militaryNumber}" id="militaryNumber" placeholder="Enter your militaryNumber" readonly>
+        </div>
+        <div class="form-group password">
+            <label for="password">Password</label>
+            <i id="pass-toggle-btn" class="fas fa-eye"></i>
+            <input type="text" th:field="*{password}" id="password" placeholder="Enter your Password">
+        </div>
+        <br />
+        <div class="form-group submit-btn">
+            <input type="submit" value="Edit Soldier">
+        </div>
+        <div>
+        </div>
+    </form>
+
+</section>
+<!--footer------------->
+<footer>
+    <p>Copyright (C) - 2023 | Developed By <a>Kamali Kabakire Charles </a> </p>
+</footer>
+
+</body>
+
+</html>
