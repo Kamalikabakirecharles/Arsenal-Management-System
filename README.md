@@ -159,3 +159,17 @@ Relevant Technical Details:
 - Security: Spring Security ensures secure user authentication.
 - Front-end Styling: Bootstrap provides a responsive and visually appealing design.
 - Communication: RESTful APIs enable seamless communication between front-end and back-end.
+## Screens
+<img width="700" alt="Screenshot 2023-12-16 184317" src="https://github.com/user-attachments/assets/ca020ee9-3f81-4dac-bf98-3bab388b9854" />
+<img width="700" src="https://github.com/user-attachments/assets/07056ab5-0246-4249-ac39-efa446996055" />
+<br>
+<img width="700" src="https://github.com/user-attachments/assets/302bc0ef-1b58-45cd-9631-74059f9c43f3" />
+<img width="700" src="https://github.com/user-attachments/assets/08013aa5-7689-4578-8142-f871dc96da36" />
+<img width="700" src="https://github.com/user-attachments/assets/2ec0753a-3d7f-481a-b3f5-68994c9c25c8" />
+<img width="700" src="https://github.com/user-attachments/assets/15810bbd-168b-4c8d-8b2a-afb40ce76a72" />
+<img width="700" src="https://github.com/user-attachments/assets/f78e6876-04a3-4354-a564-076b7d0ddd08" />
+<img width="700" src="https://github.com/user-attachments/assets/bc84f502-975c-42c0-830b-c4416eb81786" />
+<img width="700" alt="Screenshot 2023-12-16 185117" src="https://github.com/user-attachments/assets/3050a8b3-183c-4de8-8d02-718af3c4b98a" />
+<img width="700" alt="Screenshot 2023-12-16 185145" src="https://github.com/user-attachments/assets/865385c9-dd55-4158-96b6-eac94f9d01a3" />
+<img width="700" alt="Screenshot 2023-12-16 184819" src="https://github.com/user-attachments/assets/b16ef039-690a-4433-821b-47b89e1af59f" />
+<img width="700" alt="Screenshot 2023-12-16 184855" src="https://github.com/user-attachments/assets/0473d187-b30d-43e5-a843-d969986faafa" />
